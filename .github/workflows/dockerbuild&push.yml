@@ -1,0 +1,30 @@
+
+name: CI
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+  workflow_dispatch:
+jobs:
+  Buildandpushdocker:
+    runs-on: ubuntu-latest
+    environment: Dev
+    steps:
+      - name: gitclone 
+        run: git clone https://github.com/Saash09/Akshatha.git
+      - name: docker installation 
+        run: curl -fsSL https://get.docker.com | sh 
+      - name: docker login 
+        run: docker login --username ${{secrets.DOCKERHUBUSERNAME}} --password-stdin ${{secrets.DOCKERHUBPASSWORD}}
+      - name: print passwords 
+        run: echo ${{secrets.DOCKERHUBUSERNAME}}
+      - name: docker build 
+        run: cd testenv && docker build . -t fast_api:satyam
+
+     
+  
+
+      
+      
+    
