@@ -16,7 +16,7 @@ jobs:
       - name: docker installation 
         run: curl -fsSL https://get.docker.com | sh 
       - name: docker login 
-        run: docker login --username ${{secrets.DOCKERHUBUSERNAME}} --password-stdin ${{secrets.DOCKERHUBPASSWORD}}
+        run: docker login --username ${{secrets.DOCKERHUBUSERNAME}} --password ${{secrets.DOCKERHUBPASSWORD}}
       - name: print passwords 
         run: echo ${{secrets.DOCKERHUBUSERNAME}}
       - name: docker build 
